@@ -1,6 +1,5 @@
-import AboutSectionOne from "@/client/components/About/AboutSectionOne";
-import Breadcrumb from "@/client/components/Common/Breadcrumb";
-
+import AboutSectionOne from "components/About/AboutSectionOne";
+import Breadcrumb from "components/Common/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
