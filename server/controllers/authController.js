@@ -63,6 +63,7 @@ export const login = async(req,res) => {
         const user = await userModel.findOne({$or: [{ idNum }, { email }]}); // check this
 
         if(!user){
+            res.status(404);
             return res.json({success:false, message: 'Invalid Email / ID'})
         }
 
@@ -70,6 +71,7 @@ export const login = async(req,res) => {
 
 
         if (!isMatch) {
+            res.status(404);
             return res.json({success:false, message: 'Invalid password'})
         }
 
@@ -81,11 +83,12 @@ export const login = async(req,res) => {
             sameSite: process.env.NODE_ENV == 'production' ? 'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000
     });
-
+    res.status(200);
     return res.json({success:true});
 
 
     } catch (error) {
+        res.status(404);
         return res.json({success: false, message: error.message});
     }
 } 
